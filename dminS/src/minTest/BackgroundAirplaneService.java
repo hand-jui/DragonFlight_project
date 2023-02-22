@@ -12,7 +12,7 @@ public class BackgroundAirplaneService implements Runnable {
 	private BufferedImage image;
 	private Player player;
 
-	public BackgroundAirplaneService(Player airplane) {
+	public BackgroundAirplaneService(Player player) {
 		this.player = player;
 		try {
 			image = ImageIO.read(new File("images/background3.png"));

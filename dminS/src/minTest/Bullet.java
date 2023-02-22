@@ -3,26 +3,26 @@ package minTest;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Bullet extends JLabel{
+public class Bullet extends JLabel {
 
-	//버블의 위치 상태
+	// 버블의 위치 상태
 	private int x;
 	private int y;
-	
+
 	private boolean up;
-	
+
 	private int state;
-	
+
 	private ImageIcon bullet;
-	
+
 	private Player player;
-	
+
 	public Bullet(Player player) {
 		this.player = player;
 		initDate();
 		setInitLayout();
+		initThread();
 	}
-
 
 	private void initDate() {
 		bullet = new ImageIcon("images/gun.png");
@@ -35,6 +35,24 @@ public class Bullet extends JLabel{
 		y = player.getY();
 		setIcon(bullet);
 		setSize(10, 10);
-		setLocation(x,y);
+		setLocation(x, y);
+	}
+
+	private void initThread() {
+		new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while(true) {
+					y--;
+					setLocation(x, y);
+					try {
+						Thread.sleep(1);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}).start();
 	}
 }

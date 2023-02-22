@@ -68,6 +68,7 @@ public class Frame extends JFrame {
 				case KeyEvent.VK_SPACE:
 					Bullet bullet = new Bullet(player); 
 					add(bullet);
+					
 					break;
 				}
 			}
