@@ -22,7 +22,7 @@ public class Frame extends JFrame {
 
 	private void initDate() {
 		backgroundMap = new JLabel(new ImageIcon("images/background3.png"));
-		setTitle("Galaga");
+		setTitle("DragonFlight");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(backgroundMap);
 		setSize(600, 900);
