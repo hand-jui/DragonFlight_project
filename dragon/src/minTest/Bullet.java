@@ -15,8 +15,10 @@ public class Bullet extends JLabel {
 	private ImageIcon bullet;
 
 	private Player player;
+	private Enemy enemy;
 
-	public Bullet(Player player) {
+	public Bullet(Player player, Enemy enemy) {
+		this.enemy = enemy;
 		this.player = player;
 		initDate();
 		setInitLayout();
@@ -39,19 +41,35 @@ public class Bullet extends JLabel {
 
 	private void initThread() {
 		new Thread(new Runnable() {
-
 			@Override
 			public void run() {
-				while(true) {
-					y--;
-					setLocation(x, y);
-					try {
-						Thread.sleep(1);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
+				up();
 			}
 		}).start();
+	}
+
+	public void up() {
+		while (true) {
+			y--;
+			setLocation(x + 20, y);
+			if (Math.abs(x - enemy.getX()) < 80 && Math.abs(y - enemy.getY()) < 80) {
+				if (enemy.getState() == 0) {
+					crash();
+				}
+			}
+			try {
+				Thread.sleep(1);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public void crash() {
+		enemy.setState(1);
+		state = 1;
+		enemy.setIcon(null);
+		enemy.remove(enemy);
+		enemy.repaint();
 	}
 }

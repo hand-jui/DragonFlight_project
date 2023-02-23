@@ -12,12 +12,14 @@ public class Frame extends JFrame {
 	private JLabel backgroundMap;
 	private Player player;
 	private Enemy enemy;
-
+	
 	public Frame() {
 		initDate();
 		setInitLayout();
 		addEventListener();
-		new Thread(new BackgroundAirplaneService(player)).start();
+		new Thread(new BackgroundPlayerService(player)).start();
+		autoFire(); // 자동발사 프레임 생성할 때 자동실행
+		
 	}
 
 	private void initDate() {
@@ -31,6 +33,7 @@ public class Frame extends JFrame {
 	}
 
 	private void setInitLayout() {
+		Bullet bullet = new Bullet(player , enemy); 
 		setLayout(null);
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -68,14 +71,22 @@ public class Frame extends JFrame {
 					// 아래 버튼을 때면 멈춰야해
 					player.setRight(false);
 					break;
-				case KeyEvent.VK_SPACE:
-					Bullet bullet = new Bullet(player); 
-					add(bullet);
-					
-					break;
 				}
 			}
 		});
+	}
+	
+	// 새로 추가한 자동 발사 메서드
+	private void autoFire() {
+		while(true) {
+			Bullet bullet = new Bullet(player, enemy); 
+			add(bullet);
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	public static void main(String[] args) {
 		new Frame();
