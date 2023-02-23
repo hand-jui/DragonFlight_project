@@ -1,45 +1,57 @@
 package Background;
 
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+// 첫 화면 
+
 public class StartWindow extends JFrame {
-
-	private JPanel jPanel;
-	private JButton button;
-
+	
+	ImageIcon imageicon;
+	Image image;
+	MyPanel panel;
+	JButton button; 
+	
 	public StartWindow() {
+		
 		initData();
-		setInitLayout();
+		setInitLayout();	
 		addEventListener();
-
+		
 	}
-
+	
 	public void initData() {
-
-		setTitle("GameStart");
-		setSize(300, 200);
-
+		
+		setTitle("Start");
+		setSize(600, 900);			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		jPanel = new JPanel();
-		button = new JButton("GameStart");
-
+		
+		button = new JButton("Gamestart");
+		imageicon = new ImageIcon("images/GameBackground1.png");
+		image = imageicon.getImage();
+		panel = new MyPanel();
+		
 	}
-
+	
 	public void setInitLayout() {
-
+		
 		setVisible(true);
-
-		add(jPanel);
-		jPanel.add(button);
-
+		panel.setLayout(new FlowLayout());
+		add(panel);
+		panel.add(button);
+		
 	}
+	
 
+	
 	public void addEventListener() {
 
 		button.addActionListener(new ActionListener() {
@@ -54,7 +66,17 @@ public class StartWindow extends JFrame {
 		});
 
 	}
-
+	// JPanel 내부 클래스 (배경 이미지)
+	class MyPanel extends JPanel{
+		
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.drawImage(image, 0, 0, getWidth(), getHeight(),this);
+		}
+	}
+	
+	
 	public static void main(String[] args) {
 		new StartWindow();
 	}
