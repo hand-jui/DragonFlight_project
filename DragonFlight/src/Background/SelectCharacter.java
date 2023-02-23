@@ -1,7 +1,8 @@
 package Background;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,12 +13,14 @@ import javax.swing.JPanel;
 
 import dragonF.Frame;
 
+
 public class SelectCharacter extends JFrame {
 
 
-	private JPanel panel1;
-	private JPanel panel2;	
-	
+	ImageIcon imageicon;
+	Image image;
+	MyPanel mypanel;	
+		
 	private JButton button1;
 	private JButton button2;
 	private JButton button3;
@@ -35,11 +38,9 @@ public class SelectCharacter extends JFrame {
 	public void initData() {
 
 		setTitle("SelectCharacter");
-		setSize(800, 900);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		panel1 = new JPanel();
-		panel2 = new JPanel();				
+		setSize(800, 850);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		
+				
 		button1 = new JButton(new ImageIcon("images/Character_Nella.png"));
 		button2 = new JButton(new ImageIcon("images/Character_Rose.png"));
 		button3 = new JButton(new ImageIcon("images/Character_Roxy.png"));
@@ -60,25 +61,31 @@ public class SelectCharacter extends JFrame {
 //		button2.setFocusPainted(false);
 //		button3.setFocusPainted(false);
 //		button4.setFocusPainted(false);
+		
+		
+		imageicon = new ImageIcon("images/GameBackground1.png");
+		image = imageicon.getImage();
+		mypanel = new MyPanel();
+		
 
 	}
 
 	public void setInitLayout() {
 
 		setVisible(true);
-		setResizable(false);
-		add(panel1,BorderLayout.NORTH);
-		add(panel2,BorderLayout.CENTER);
+		setResizable(false);		
 
-		panel1.add(button1);
-		panel1.add(button2);
-		panel1.setLayout(new FlowLayout(FlowLayout.CENTER,80,80));
-		panel2.add(button3);
-		panel2.add(button4);
-		panel2.setLayout(new FlowLayout(FlowLayout.CENTER,80,60));
+		mypanel.add(button1);
+		mypanel.add(button2);
+		mypanel.add(button3);
+		mypanel.add(button4);		
+		mypanel.setLayout(new FlowLayout(FlowLayout.CENTER,80,80));		
+		add(mypanel);
+
 
 	}
-
+	
+	// 게임창으로 넘어감 
 	public void addEventListener() {
 
 		button1.addActionListener(new ActionListener() {
@@ -117,6 +124,16 @@ public class SelectCharacter extends JFrame {
 			}
 		});
 
+	}
+	
+	// JPanel 내부 클래스 (배경 이미지)
+	class MyPanel extends JPanel{
+		
+		@Override
+		protected void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			g.drawImage(image, 0, 0, getWidth(), getHeight(),this);
+		}
 	}
 
 	public static void main(String[] args) {
