@@ -1,9 +1,9 @@
-package minTest;
+package dragonF;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class Bullet extends JLabel {
+public class Bullet2 extends JLabel {
 
 	private int x;
 	private int y;
@@ -15,9 +15,10 @@ public class Bullet extends JLabel {
 	private ImageIcon bullet;
 
 	private Frame mContext;
+	
+	
 
-
-	public Bullet(Frame mContext) {
+	public Bullet2(Frame mContext) {
 		this.mContext = mContext;
 		initDate();
 		setInitLayout();

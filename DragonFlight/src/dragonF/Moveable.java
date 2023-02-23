@@ -1,4 +1,4 @@
-package minTest;
+package dragonF;
 
 public interface Moveable {
 	public abstract void left();
