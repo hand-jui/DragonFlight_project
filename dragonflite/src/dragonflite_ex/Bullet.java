@@ -1,4 +1,4 @@
-package minTest;
+package dragonflite_ex;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -15,7 +15,6 @@ public class Bullet extends JLabel {
 	private ImageIcon bullet;
 
 	private Frame mContext;
-
 
 	public Bullet(Frame mContext) {
 		this.mContext = mContext;
@@ -50,11 +49,12 @@ public class Bullet extends JLabel {
 	public void up() {
 		while (true) {
 			y--;
-			setLocation(x + 20, y);
-			if (Math.abs(x - mContext.getEnemy().getX()) < 80 && Math.abs(y - mContext.getEnemy().getY()) < 80) {
-				if (mContext.getEnemy().getState() == 0) {
-					crash();
-				}
+			setLocation(x+20, y);
+			for (int i = 0; i < mContext.enemyes.length; i++) {
+			if(search()) {
+				mContext.enemyes[i].remove(mContext.enemyes[i]);
+				mContext.enemyes[i].repaint();
+			}
 			}
 			try {
 				Thread.sleep(1);
@@ -64,11 +64,12 @@ public class Bullet extends JLabel {
 		}
 	}
 
-	public void crash() {
-		mContext.getEnemy().setState(1);
-		state = 1;
-		mContext.getEnemy().setIcon(null);
-		mContext.remove(mContext.getEnemy());
-		mContext.repaint();
+	public boolean search() {
+		for (int i = 0; i < mContext.enemyes.length; i++) {
+			if (Math.abs(x - mContext.enemyes[i].getX()-35) < 70 && Math.abs(y - mContext.enemyes[i].getY()) < 70) {
+				mContext.enemyes[i].setIcon(null); 			
+				}
+			}
+		return true;
 	}
 }

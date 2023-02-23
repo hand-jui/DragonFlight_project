@@ -1,4 +1,4 @@
-package minTest;
+package dragonflite_ex;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -15,9 +15,10 @@ public class Frame extends JFrame {
 	private Player player;
 	private Enemy enemy;
 
-	private Enemy[] enemyes = new Enemy[5];
+	Enemy[] enemyes = new Enemy[5];
 	private int[] enX = {50,150,250,350,450};
 	private int enY = 100;
+	
 	public Player getPlayer() {
 		return player;
 	}
@@ -58,7 +59,7 @@ public class Frame extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 		add(player);
-		//add(enemyes[1]);
+		//add(enemy);
 		for (int i = 0; i < enemyes.length; i++) {
 			add(enemyes[i]);
 		}

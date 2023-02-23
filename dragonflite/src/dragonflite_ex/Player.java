@@ -1,4 +1,4 @@
-package minTest;
+package dragonflite_ex;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
