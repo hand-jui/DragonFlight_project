@@ -9,7 +9,6 @@ public class Bullet extends JLabel {
 	private int y;
 
 	private boolean up;
-
 	private int state;
 
 	private ImageIcon bullet;
@@ -49,13 +48,29 @@ public class Bullet extends JLabel {
 	public void up() {
 		while (true) {
 			y--;
-			setLocation(x+20, y);
-			for (int i = 0; i < mContext.enemyes.length; i++) {
-			if(search()) {
-				mContext.enemyes[i].remove(mContext.enemyes[i]);
-				mContext.enemyes[i].repaint();
+			setLocation(x + 20, y);
+			for (int i = 0; i < mContext.enemyList.size(); i++) {
+				if (search()) {
+					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
+					mContext.enemyList.get(i).repaint();
+					System.out.println("충돌");
+					
+				}
+
+				if (mContext.enemyList.get(i).getY() > 900) {
+					mContext.enemyList.get(i).setIcon(null);
+					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
+				}
 			}
+			// 총알 객체 지우는 부분
+			if (y < 30) {
+				setIcon(null);
+				bullet = null;
+				System.out.println(bullet);
+				System.out.println(y);
+				break;
 			}
+
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
@@ -65,11 +80,13 @@ public class Bullet extends JLabel {
 	}
 
 	public boolean search() {
-		for (int i = 0; i < mContext.enemyes.length; i++) {
-			if (Math.abs(x - mContext.enemyes[i].getX()-35) < 70 && Math.abs(y - mContext.enemyes[i].getY()) < 70) {
-				mContext.enemyes[i].setIcon(null); 			
-				}
+		for (int i = 0; i < mContext.enemyList.size(); i++) {
+			if (Math.abs(x - mContext.enemyList.get(i).getX() - 35) < 70
+					&& Math.abs(y - mContext.enemyList.get(i).getY()) < 70) {
+				mContext.enemyList.get(i).setIcon(null);
+				
 			}
+		}
 		return true;
 	}
 }

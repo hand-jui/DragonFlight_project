@@ -83,7 +83,7 @@ public class Player extends JLabel implements Moveable {
 
 
 	private void initDate() {
-		player = new ImageIcon("images/player1.png");
+		player = new ImageIcon("images/air.png");
 		left = false;
 		right = false;
 		leftWallCrash = false;

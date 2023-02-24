@@ -7,19 +7,21 @@ import javax.swing.JLabel;
 
 public class Enemy extends JLabel {
 
+	private Frame mContext;
 	private int state;// 상태 값 죽은지 살았는지
-
 	private int x;
 	private int y;
 
 	private boolean down;
+	private boolean endGame = false;
 
 	private final int SPEED = 3;
 
 	private ImageIcon enemyP;
 
-	public Enemy() {
-		initDate();
+	public Enemy(int x, int y) {
+
+		initDate(x, y);
 		setInitLayout();
 		downThread();
 	}
@@ -68,10 +70,11 @@ public class Enemy extends JLabel {
 		return SPEED;
 	}
 
-	private void initDate() {
+	private void initDate(int x, int y) {
+		this.x = x;
+		this.y = y;
+
 		enemyP = new ImageIcon("images/Enemypink.png");
-		x = 275;
-		y = 100;
 		down = false;
 		state = 0;// 상태값
 	}
@@ -90,14 +93,20 @@ public class Enemy extends JLabel {
 				while (true) {
 					y = y + SPEED;
 					setLocation(x, y);
+					if (y > 800) {
+						setIcon(null);
+					}
 					try {
 						Thread.sleep(20);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+
+					if (endGame) {
+						break;
+					}
 				}
 			}
 		}).start();
 	}
-
 }

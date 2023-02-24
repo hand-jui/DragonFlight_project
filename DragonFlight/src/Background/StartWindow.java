@@ -1,8 +1,6 @@
 package Background;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -24,11 +22,9 @@ public class StartWindow extends JFrame {
 	JButton button;
 
 	public StartWindow() {
-
 		initData();
 		setInitLayout();
 		addEventListener();
-
 	}
 
 	public void initData() {
@@ -43,6 +39,7 @@ public class StartWindow extends JFrame {
 		// 버튼 테두리 없애기
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
+		button.setFocusPainted(false);
 		button.setFocusPainted(false);
 
 		imageicon = new ImageIcon("images/GameBackground1.png");
