@@ -35,7 +35,15 @@ public class StartWindow extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		button = new JButton("Gamestart");
+		button = new JButton(new ImageIcon("images/GameStart_button.png"));
+		
+		// 버튼 테두리 없애기
+		button.setBorderPainted(false);
+		button.setContentAreaFilled(false);
+		button.setFocusPainted(false);	
+		
+		
+		
 		imageicon = new ImageIcon("images/GameBackground1.png");
 		image = imageicon.getImage();
 		panel = new MyPanel();
