@@ -56,11 +56,33 @@ public class Bullet extends JLabel {
 					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
 					mContext.enemyList.get(i).repaint();
 				}
+<<<<<<< Updated upstream
 				if(mContext.enemyList.get(i).getY() > 800) {
 					mContext.enemyList.get(i).setIcon(null);
 					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
+=======
+				
+				// 이 부분 지울 것 
+				if(mContext.enemyList.get(i).getY() > 800) {
+//					mContext.enemyList.get(i).setIcon(null);
+//					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
 				}
 			}
+			
+			
+			// 총알 객체 지우는 부분 
+			if (y < 100) {
+				setIcon(null);
+				bullet = null;
+				System.out.println(y);
+				if (y < 300) {
+					System.out.println(bullet);
+					break;
+>>>>>>> Stashed changes
+				}
+			}
+			
+			
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {

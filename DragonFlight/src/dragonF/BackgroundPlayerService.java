@@ -31,7 +31,7 @@ public class BackgroundPlayerService implements Runnable {
 			if (leftColor.getRed() == 255 && leftColor.getGreen() == 0 && leftColor.getBlue() == 0) {
 				player.setLeft(false);
 				player.setLeftWallCrash(true);
-				System.out.println("왼쪽 빨간벽이에요");// 확인용
+				//System.out.println("왼쪽 빨간벽이에요");// 확인용
 			} else if (rightColor.getRed() == 255 && rightColor.getGreen() == 0 && rightColor.getBlue() == 0) {
 				player.setRight(false);
 				player.setRightWallCrash(true);

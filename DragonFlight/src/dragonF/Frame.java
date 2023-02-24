@@ -15,13 +15,24 @@ public class Frame extends JFrame {
 	private JLabel backgroundMap;
 	private Player player;
 	private Enemy enemy;
+<<<<<<< Updated upstream
 
 	List<Enemy> enemyList = new ArrayList<>();
 	
 	int j = 0;
 	
+=======
+	int j;
+
+	List<Enemy> enemyList = new ArrayList<>();
+
+>>>>>>> Stashed changes
 	public Player getPlayer() {
 		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	public Enemy getEnemy() {
@@ -32,8 +43,14 @@ public class Frame extends JFrame {
 		initDate();
 		setInitLayout();
 		addEventListener();
+		enemyCreate();
+
 		new Thread(new BackgroundPlayerService(player)).start();
+<<<<<<< Updated upstream
 		enemying();
+=======
+
+>>>>>>> Stashed changes
 	}
 
 	private void initDate() {
@@ -43,16 +60,29 @@ public class Frame extends JFrame {
 		setContentPane(backgroundMap);
 		setSize(600, 900);
 		player = new Player(mContext);
+<<<<<<< Updated upstream
 	}
 
 	private void setInitLayout() {
 		//Bullet bullet = new Bullet(mContext);
+=======
+
+	}
+
+	private void setInitLayout() {
+
+>>>>>>> Stashed changes
 		setLayout(null);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		add(player);
+<<<<<<< Updated upstream
 		
+=======
+		//enemyList(); 
+
+>>>>>>> Stashed changes
 	}
 
 	private void addEventListener() {
@@ -70,9 +100,16 @@ public class Frame extends JFrame {
 						player.right();
 					}
 					break;
+<<<<<<< Updated upstream
 				case KeyEvent.VK_SPACE:
 					Bullet bullet = new Bullet(mContext);
 					add(bullet);
+=======
+
+				case KeyEvent.VK_SPACE: // 스페이스 누르면 총알 객체 생성
+					Bullet bullet = new Bullet(mContext);
+					add(bullet); // frame에서 붙여야 된다.
+>>>>>>> Stashed changes
 				}
 			}
 
@@ -92,6 +129,7 @@ public class Frame extends JFrame {
 			}
 		});
 	}
+<<<<<<< Updated upstream
 
 //	public void enemying() {
 //		for (int i = 0; i < 5; i++) {
@@ -120,8 +158,36 @@ public class Frame extends JFrame {
 				}
 			}
 		}).start();
+=======
+	
+	public void remove() {
+		for(int i =0;  i<enemyList.size() ; i++) {
+			enemyList.remove(i);
+		}
+>>>>>>> Stashed changes
 	}
-
+	
+	public void enemyCreate() {
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while(true) {
+					for (int i = 0; i < 5; i++) {
+						enemyList.add(new Enemy(50 + (i * 100), 100)); 
+						add(enemyList.get(j));
+						j++;
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}).start();
+	}
+	
+	
 	public static void main(String[] args) {
 		new Frame();
 	}

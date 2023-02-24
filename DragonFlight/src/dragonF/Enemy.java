@@ -7,12 +7,13 @@ import javax.swing.JLabel;
 
 public class Enemy extends JLabel {
 
+	private Frame mContext;
 	private int state;// 상태 값 죽은지 살았는지
-
 	private int x;
 	private int y;
 
 	private boolean down;
+	private boolean endGame = false;
 
 	private final int SPEED = 3;
 
@@ -20,7 +21,12 @@ public class Enemy extends JLabel {
 	
 	
 
+<<<<<<< Updated upstream
 	public Enemy(int x,int y) {
+=======
+	public Enemy(int x, int y) {
+
+>>>>>>> Stashed changes
 		initDate(x,y);
 		setInitLayout();
 		downThread();
@@ -72,7 +78,11 @@ public class Enemy extends JLabel {
 
 	private void initDate(int x, int y) {
 		this.x = x;
+<<<<<<< Updated upstream
 		this.y = y;
+=======
+		this.y =y;
+>>>>>>> Stashed changes
 		enemyP = new ImageIcon("images/Enemypink.png");
 		down = false;
 		state = 0;// 상태값
@@ -92,18 +102,41 @@ public class Enemy extends JLabel {
 				while (true) {
 					y = y + SPEED;
 					setLocation(x, y);
+					if (y > 800) {
+						setIcon(null);
+					}
 					try {
 						Thread.sleep(20);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
+					
+					if (endGame) {
+						break;
+					}
+
 				}
 			}
 		}).start();
 	}
 
+<<<<<<< Updated upstream
 
 	
 
 
+=======
+//	public void crashPlayer() {
+//		for (int i = 0; i < mContext.enemyes.length; i++) {
+//			
+//			if (Math.abs(mContext.enemyes[i].getX() - mContext.getPlayer().getX()) < 10
+//					&& Math.abs(mContext.enemyes[i].getY() - mContext.getPlayer().getY()) < 10) {
+//					endGame =true;
+//			}
+////			if (Math.abs(mContext.enemyes[i].getY() - mContext.getPlayer().getY()) < 700) {
+////				mContext.getPlayer().setIcon(null);
+////			}
+//		}
+//	}
+>>>>>>> Stashed changes
 }

@@ -56,9 +56,14 @@ public class StartWindow extends JFrame {
 		panel.setLayout(new FlowLayout());
 		add(panel);
 		panel.add(button);
+<<<<<<< Updated upstream
 
 	}
 
+=======
+	}
+	
+>>>>>>> Stashed changes
 	public void addEventListener() {
 
 		button.addActionListener(new ActionListener() {
