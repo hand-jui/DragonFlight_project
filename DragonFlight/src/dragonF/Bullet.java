@@ -42,7 +42,6 @@ public class Bullet extends JLabel {
 			@Override
 			public void run() {
 				up();
-				// bulletRemove();
 			}
 		}).start();
 	}
@@ -56,32 +55,20 @@ public class Bullet extends JLabel {
 					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
 					mContext.enemyList.get(i).repaint();
 				}
-<<<<<<< Updated upstream
-				if(mContext.enemyList.get(i).getY() > 800) {
+
+				if (mContext.enemyList.get(i).getY() > 900) {
 					mContext.enemyList.get(i).setIcon(null);
 					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
-=======
-				
-				// 이 부분 지울 것 
-				if(mContext.enemyList.get(i).getY() > 800) {
-//					mContext.enemyList.get(i).setIcon(null);
-//					mContext.enemyList.get(i).remove(mContext.enemyList.get(i));
 				}
 			}
-			
-			
-			// 총알 객체 지우는 부분 
-			if (y < 100) {
+			// 총알 객체 지우는 부분
+			if (y < 200) {
 				setIcon(null);
-				bullet = null;
+				bullet =null;
+				System.out.println(bullet);
 				System.out.println(y);
-				if (y < 300) {
-					System.out.println(bullet);
-					break;
->>>>>>> Stashed changes
-				}
+				break;
 			}
-			
 			
 			try {
 				Thread.sleep(1);
@@ -91,10 +78,10 @@ public class Bullet extends JLabel {
 		}
 	}
 
-
 	public boolean search() {
 		for (int i = 0; i < mContext.enemyList.size(); i++) {
-			if (Math.abs(x - mContext.enemyList.get(i).getX() - 35) < 70 && Math.abs(y -mContext.enemyList.get(i).getY()) < 70) {
+			if (Math.abs(x - mContext.enemyList.get(i).getX() - 35) < 70
+					&& Math.abs(y - mContext.enemyList.get(i).getY()) < 70) {
 				mContext.enemyList.get(i).setIcon(null);
 			}
 		}

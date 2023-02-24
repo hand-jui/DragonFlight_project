@@ -18,15 +18,9 @@ public class Enemy extends JLabel {
 	private final int SPEED = 3;
 
 	private ImageIcon enemyP;
-	
-	
 
-<<<<<<< Updated upstream
-	public Enemy(int x,int y) {
-=======
 	public Enemy(int x, int y) {
 
->>>>>>> Stashed changes
 		initDate(x,y);
 		setInitLayout();
 		downThread();
@@ -78,11 +72,8 @@ public class Enemy extends JLabel {
 
 	private void initDate(int x, int y) {
 		this.x = x;
-<<<<<<< Updated upstream
 		this.y = y;
-=======
-		this.y =y;
->>>>>>> Stashed changes
+
 		enemyP = new ImageIcon("images/Enemypink.png");
 		down = false;
 		state = 0;// 상태값
@@ -119,24 +110,8 @@ public class Enemy extends JLabel {
 			}
 		}).start();
 	}
+}
 
-<<<<<<< Updated upstream
 
 	
 
-
-=======
-//	public void crashPlayer() {
-//		for (int i = 0; i < mContext.enemyes.length; i++) {
-//			
-//			if (Math.abs(mContext.enemyes[i].getX() - mContext.getPlayer().getX()) < 10
-//					&& Math.abs(mContext.enemyes[i].getY() - mContext.getPlayer().getY()) < 10) {
-//					endGame =true;
-//			}
-////			if (Math.abs(mContext.enemyes[i].getY() - mContext.getPlayer().getY()) < 700) {
-////				mContext.getPlayer().setIcon(null);
-////			}
-//		}
-//	}
->>>>>>> Stashed changes
-}

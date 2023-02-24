@@ -21,11 +21,9 @@ public class StartWindow extends JFrame {
 	JButton button;
 
 	public StartWindow() {
-
 		initData();
 		setInitLayout();
 		addEventListener();
-
 	}
 
 	public void initData() {
@@ -42,8 +40,6 @@ public class StartWindow extends JFrame {
 		button.setContentAreaFilled(false);
 		button.setFocusPainted(false);	
 		
-		
-		
 		imageicon = new ImageIcon("images/GameBackground1.png");
 		image = imageicon.getImage();
 		panel = new MyPanel();
@@ -56,14 +52,9 @@ public class StartWindow extends JFrame {
 		panel.setLayout(new FlowLayout());
 		add(panel);
 		panel.add(button);
-<<<<<<< Updated upstream
-
 	}
 
-=======
-	}
-	
->>>>>>> Stashed changes
+
 	public void addEventListener() {
 
 		button.addActionListener(new ActionListener() {
