@@ -1,6 +1,9 @@
 package Background;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -40,9 +43,7 @@ public class StartWindow extends JFrame {
 		// 버튼 테두리 없애기
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
-		button.setFocusPainted(false);	
-		
-		
+		button.setFocusPainted(false);			
 		
 		imageicon = new ImageIcon("images/GameBackground1.png");
 		image = imageicon.getImage();
@@ -52,10 +53,13 @@ public class StartWindow extends JFrame {
 
 	public void setInitLayout() {
 
+		setResizable(false);
 		setVisible(true);
-		panel.setLayout(new FlowLayout());
+		panel.setLayout(null);		
 		add(panel);
 		panel.add(button);
+		button.setSize(300, 180);
+		button.setLocation(130, 600);
 
 	}
 
@@ -81,6 +85,10 @@ public class StartWindow extends JFrame {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 100));
+			g.setColor(Color.yellow);
+			g.drawString("DRAGON",30 ,150 );
+			g.drawString("FLIGHT",80 ,300 );
 		}
 	}
 

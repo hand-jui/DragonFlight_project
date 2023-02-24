@@ -17,8 +17,12 @@ public class FallingBack extends JPanel implements ActionListener {
 	private int backgroundY = 0;
 	private int backgroundSpeed = 5;
 
-	public FallingBack() throws IOException {
-		backgroundImage = ImageIO.read(new File("images/GameBackground1.png"));
+	public FallingBack() {
+		try {
+			backgroundImage = ImageIO.read(new File("images/GameBackground1.png"));
+		} catch (IOException e) {
+			System.out.println("이미지경로확인");
+		}
 		javax.swing.Timer timer = new javax.swing.Timer(30, this);
 		timer.start();
 	}
@@ -39,7 +43,7 @@ public class FallingBack extends JPanel implements ActionListener {
 		repaint();
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		JFrame frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(new FallingBack());
