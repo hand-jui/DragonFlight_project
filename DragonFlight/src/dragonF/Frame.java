@@ -2,6 +2,8 @@ package dragonF;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -9,16 +11,14 @@ import javax.swing.JLabel;
 
 public class Frame extends JFrame {
 
-	
 	private Frame mContext = this;
 	private JLabel backgroundMap;
 	private Player player;
 	private Enemy enemy;
-	
 
-	Enemy[] enemyes = new Enemy[5];
-	private int[] enX = {50,150,250,350,450};
-	private int enY = 100;
+	List<Enemy> enemyList = new ArrayList<>();
+	
+	int j = 0;
 	
 	public Player getPlayer() {
 		return player;
@@ -33,8 +33,7 @@ public class Frame extends JFrame {
 		setInitLayout();
 		addEventListener();
 		new Thread(new BackgroundPlayerService(player)).start();
-		autoFire(); // 자동발사 프레임 생성할 때 자동실행
-		
+		enemying();
 	}
 
 	private void initDate() {
@@ -44,26 +43,16 @@ public class Frame extends JFrame {
 		setContentPane(backgroundMap);
 		setSize(600, 900);
 		player = new Player(mContext);
-		enemy = new Enemy();
-		for (int i = 0; i < enemyes.length; i++) {
-			enemyes[i] = new Enemy();
-			enemyes[i].setX(enX[i]);
-			enemyes[i].setY(enY);
-			enemyes[i].setLocation(enemyes[i].getX(), enemyes[i].getY());
-		}
 	}
 
 	private void setInitLayout() {
-		Bullet bullet = new Bullet(mContext);
+		//Bullet bullet = new Bullet(mContext);
 		setLayout(null);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setVisible(true);
 		add(player);
-		//add(enemy);
-		for (int i = 0; i < enemyes.length; i++) {
-			add(enemyes[i]);
-		}
+		
 	}
 
 	private void addEventListener() {
@@ -81,6 +70,9 @@ public class Frame extends JFrame {
 						player.right();
 					}
 					break;
+				case KeyEvent.VK_SPACE:
+					Bullet bullet = new Bullet(mContext);
+					add(bullet);
 				}
 			}
 
@@ -101,21 +93,36 @@ public class Frame extends JFrame {
 		});
 	}
 
-	// 새로 추가한 자동 발사 메서드
-	private void autoFire() {
-		while (true) {
-			Bullet bullet = new Bullet(mContext);
-			add(bullet);
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+//	public void enemying() {
+//		for (int i = 0; i < 5; i++) {
+//			enemyList.add(new Enemy(50 + (i * 100), 100));
+//			add(enemyList.get(i));
+//		}
+//	}
+
+	public void enemying() {
+		new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while (true) {
+					System.out.println("111111111111");
+					for (int i = 0; i < 5; i++) {
+						enemyList.add(new Enemy(50 + (i * 100), 100));//0,1,2,3,456789
+						add(enemyList.get(j));
+						j++;
+					}
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
 			}
-		}
+		}).start();
 	}
 
 	public static void main(String[] args) {
 		new Frame();
 	}
 }
-

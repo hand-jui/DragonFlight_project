@@ -17,9 +17,11 @@ public class Enemy extends JLabel {
 	private final int SPEED = 3;
 
 	private ImageIcon enemyP;
+	
+	
 
-	public Enemy() {
-		initDate();
+	public Enemy(int x,int y) {
+		initDate(x,y);
 		setInitLayout();
 		downThread();
 	}
@@ -68,10 +70,10 @@ public class Enemy extends JLabel {
 		return SPEED;
 	}
 
-	private void initDate() {
+	private void initDate(int x, int y) {
+		this.x = x;
+		this.y = y;
 		enemyP = new ImageIcon("images/Enemypink.png");
-		x = 275;
-		y = 100;
 		down = false;
 		state = 0;// 상태값
 	}
@@ -81,7 +83,7 @@ public class Enemy extends JLabel {
 		setSize(100, 100);
 		setLocation(x, y);
 	}
-
+	
 	private void downThread() {
 		new Thread(new Runnable() {
 			@Override
@@ -99,5 +101,9 @@ public class Enemy extends JLabel {
 			}
 		}).start();
 	}
+
+
+	
+
 
 }
