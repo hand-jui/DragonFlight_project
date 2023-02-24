@@ -35,7 +35,7 @@ public class StartWindow extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		button = new JButton(new ImageIcon("images/GameStart_button.png"));
+		button = new JButton(new ImageIcon("images/GS_button.png"));
 		
 		// 버튼 테두리 없애기
 		button.setBorderPainted(false);

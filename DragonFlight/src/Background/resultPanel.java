@@ -38,8 +38,8 @@ public class resultPanel extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		panel = new JPanel();
-		startbutton = new JButton(new ImageIcon("images/Restart_button.png"));
-		closebutton = new JButton(new ImageIcon("images/close_button.png"));
+		startbutton = new JButton(new ImageIcon("images/Re_button.png"));
+		closebutton = new JButton(new ImageIcon("images/Close_button.png"));
 		
 		// 버튼 테두리 없애기
 		startbutton.setBorderPainted(false);
