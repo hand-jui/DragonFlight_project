@@ -31,6 +31,7 @@ public class resultPanel extends JFrame{
 	
 	public void initData() {
 		
+		
 		setTitle("GameOver");
 		setSize(600, 900);
 		setLocationRelativeTo(null);
