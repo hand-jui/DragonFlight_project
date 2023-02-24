@@ -14,6 +14,7 @@ public class Frame extends JFrame {
 	private JLabel backgroundMap;
 	private Player player;
 	private Enemy enemy;
+	
 
 	Enemy[] enemyes = new Enemy[5];
 	private int[] enX = {50,150,250,350,450};
