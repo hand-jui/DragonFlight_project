@@ -39,12 +39,12 @@ public class StartWindow extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		button = new JButton(new ImageIcon("images/GS_button.png"));
-		
+
 		// 버튼 테두리 없애기
 		button.setBorderPainted(false);
 		button.setContentAreaFilled(false);
-		button.setFocusPainted(false);			
-		
+		button.setFocusPainted(false);
+
 		imageicon = new ImageIcon("images/GameBackground1.png");
 		image = imageicon.getImage();
 		panel = new MyPanel();
@@ -55,7 +55,7 @@ public class StartWindow extends JFrame {
 
 		setResizable(false);
 		setVisible(true);
-		panel.setLayout(null);		
+		panel.setLayout(null);
 		add(panel);
 		panel.add(button);
 		button.setSize(300, 180);
@@ -87,8 +87,8 @@ public class StartWindow extends JFrame {
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
 			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 100));
 			g.setColor(Color.yellow);
-			g.drawString("DRAGON",30 ,150 );
-			g.drawString("FLIGHT",80 ,300 );
+			g.drawString("DRAGON", 30, 150);
+			g.drawString("FLIGHT", 80, 300);
 		}
 	}
 

@@ -91,7 +91,7 @@ public class SelectCharacter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// 다음창
 				new Frame();
-				//new FallingBack();
+				// new FallingBack();
 				setVisible(false);
 
 			}
@@ -103,7 +103,7 @@ public class SelectCharacter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// 다음창
 				new Frame();
-				//new FallingBack();
+				// new FallingBack();
 				setVisible(false);
 
 			}
@@ -115,7 +115,7 @@ public class SelectCharacter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// 다음창
 				new Frame();
-				//new FallingBack();
+				// new FallingBack();
 				setVisible(false);
 
 			}
@@ -127,7 +127,7 @@ public class SelectCharacter extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// 다음창
 				new Frame();
-				//new FallingBack();
+				// new FallingBack();
 				setVisible(false);
 
 			}
