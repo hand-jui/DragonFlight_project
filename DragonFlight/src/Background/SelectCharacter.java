@@ -7,6 +7,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -82,14 +85,65 @@ public class SelectCharacter extends JFrame {
 
 	}
 
-	// 게임창으로 넘어감
+	
 	public void addEventListener() {
-
+		
+		button1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				//button1 = (JButton) e.getSource();
+				//button1.setIcon(new ImageIcon("images/Close_button.png"));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button1 = (JButton) e.getSource();
+				button1.setIcon(new ImageIcon("images/Character_Nella.png"));
+			}
+			
+		});
+		button2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				//button2 = (JButton) e.getSource();
+				//button2.setIcon(new ImageIcon("images/Close_button.png"));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button2 = (JButton) e.getSource();
+				button2.setIcon(new ImageIcon("images/Character_Rose.png"));
+			}
+		});
+		button3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				//button3 = (JButton) e.getSource();
+				//button3.setIcon(new ImageIcon("images/Close_button.png"));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button3 = (JButton) e.getSource();
+				button3.setIcon(new ImageIcon("images/Character_Roxy.png"));
+			}
+		});
+		button4.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				//button4 = (JButton) e.getSource();
+				//button4.setIcon(new ImageIcon("images/Close_button.png"));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				button4 = (JButton) e.getSource();
+				button4.setIcon(new ImageIcon("images/Character_Chloe.png"));
+			}
+		});
+		
+		
+		// 게임창으로 넘어감
 		button1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 다음창
 				new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -101,7 +155,6 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 다음창
 				new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -113,7 +166,6 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 다음창
 				new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -125,7 +177,6 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 다음창
 				new Frame();
 				// new FallingBack();
 				setVisible(false);
