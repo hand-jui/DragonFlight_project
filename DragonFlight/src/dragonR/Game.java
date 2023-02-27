@@ -5,11 +5,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 
 public class Game extends Thread {
-	private int delay = 20; // 숫자 늘리면 아래 런메서드에서 속도가 느려짐
+	private int delay = 15; // 숫자 늘리면 아래 런메서드에서 속도가 느려짐 -> 게임 속도 조절
 	private long pretime; // 이것도 모른다.
 	private int count;
 	private int score;
@@ -23,6 +24,8 @@ public class Game extends Thread {
 
 	private boolean up, down, left, right, shooting;
 	private boolean isOver;// run 메서드 내부에 while 실행시키는 플래그
+	private boolean runFlag = true;
+	private int state = 0;
 
 	private ArrayList<PlayerAttack> playerAttackList = new ArrayList<PlayerAttack>();
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
@@ -38,16 +41,25 @@ public class Game extends Thread {
 	@Override
 	public void run() {
 		reset();
-		while (true) {
+		while (runFlag) { // 원래 true인데 runflag로 교체
 			while (!isOver) {
+				// 게임 멈추기 위한 if문
+				if (state == 1) {
+					runFlag = false;
+					System.out.println("게임 종료");
+					// isOver = false;
+					break;
+				}
 				pretime = System.currentTimeMillis();
 				if (System.currentTimeMillis() - pretime < delay) {
+					// state == 1 되면 게임 멈춤
 					try {
 						Thread.sleep(delay - System.currentTimeMillis() + pretime);
 						keyProcess();
 						playerAttackProcess();
 						enemyAppearProcess(); // 적 생성 메서드 호출
 						enemyMoveProcess(); // 적 움직이는 메서드 호출
+						playerbeAttacked();
 
 						count++;
 					} catch (InterruptedException e) {
@@ -134,6 +146,26 @@ public class Game extends Thread {
 		}
 	}
 
+	private void playerbeAttacked() {
+		for (int i = 0; i < enemyList.size(); i++) {
+			if (Math.abs(playerX - enemyList.get(i).x) < 50 && Math.abs(playerY - enemyList.get(i).y) < 50) {
+				// 적군이 살아있는 상태에서만 crash() 호출시킬 예정
+				System.out.println("작동했습니다.");
+				player = null;
+				state = 1;
+				// crash(); // 체력바 할 거면 주석 풀 것
+				// System.out.println("작동했습니다.");
+			}
+		} // end of for
+	} // end of beAttacked
+
+	// 체력바 할 거면 주석 풀어라
+//	public void crash() {
+//		state = 1;
+//		player = null;
+//		System.out.println(player);
+//	}
+
 	private void enemyAppearProcess() {
 		if (count % 80 == 0) {
 			// enemy = new Enemy(1120, (int)(Math.random()*621));
@@ -156,13 +188,14 @@ public class Game extends Thread {
 	private void enemyMoveProcess() {
 		for (int i = 0; i < enemyList.size(); i++) {
 			enemy = enemyList.get(i);
-
 			enemy.move();
 		}
 	}
 
 	public void gameDraw(Graphics g) {
-		playerDraw(g);
+		if (player != null) {
+			playerDraw(g);
+		}
 		enemyDraw(g);
 		infoDraw(g);
 	}

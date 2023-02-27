@@ -58,7 +58,6 @@ public class ShootingGame extends JFrame {
 		addKeyListener(new KeyListener());
 	}
 
-	
 	// 아래 주석 부분 게임 딜레이 있다가 시작하는 부분
 //	// 엔터 눌러서 게임 시작
 //	private void gameStart() {
@@ -80,14 +79,12 @@ public class ShootingGame extends JFrame {
 //		loadingTimer.schedule(loadingTask, 3000);
 //	}
 
-	
-
 	// 엔터 눌러서 게임 시작
 	private void gameStart() {
-				isGameScreen = true;
-				game.start();
+		isGameScreen = true;
+		game.start();
 	}
-	
+
 	// 이부분 모름
 	public void paint(Graphics g) {
 		bufferImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
@@ -95,8 +92,6 @@ public class ShootingGame extends JFrame {
 		screenDraw(screenGraphic);
 		g.drawImage(bufferImage, 0, 0, null);
 	}
-	
-	
 
 	// 실행되면 화면 그려주는 부분
 	public void screenDraw(Graphics g) {

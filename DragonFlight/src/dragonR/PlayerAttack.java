@@ -1,21 +1,22 @@
 package dragonR;
+
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
 public class PlayerAttack {
-    Image image = new ImageIcon("images/fireAttack.png").getImage();
-    int x, y;
-    int width = image.getWidth(null);
-    int height = image.getHeight(null);
-    int attack = 3; // 원래 5였는데 많이 때리는 걸로 바꾼다고 2으로 함
+	Image image = new ImageIcon("images/fireAttack.png").getImage();
+	int x, y;
+	int width = image.getWidth(null);
+	int height = image.getHeight(null);
+	int attack = 3; // 원래 5였는데 많이 때리는 걸로 바꾼다고 2으로 함
 
-    public PlayerAttack(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+	public PlayerAttack(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
-    public void fire() {
-        this.y -= 15;
-    }
+	public void fire() {
+		this.y -= 15;
+	}
 }
