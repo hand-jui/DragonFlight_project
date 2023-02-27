@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import dragonF.Frame;
+import dragonR.ShootingGame;
 
 public class SelectCharacter extends JFrame {
 
@@ -144,7 +145,8 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Frame();
+				new ShootingGame();
+				//new Frame();
 				// new FallingBack();
 				setVisible(false);
 
@@ -155,7 +157,8 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Frame();
+				new ShootingGame();
+				//new Frame();
 				// new FallingBack();
 				setVisible(false);
 
@@ -166,7 +169,8 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Frame();
+				new ShootingGame();
+				//new Frame();
 				// new FallingBack();
 				setVisible(false);
 
@@ -177,7 +181,8 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Frame();
+				new ShootingGame();
+				//new Frame();
 				// new FallingBack();
 				setVisible(false);
 

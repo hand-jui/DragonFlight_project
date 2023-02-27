@@ -3,6 +3,8 @@ package dragonF;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Background.GameFrame;
+
 public class Player extends JLabel implements Moveable {
 
 	private int x;
@@ -20,7 +22,7 @@ public class Player extends JLabel implements Moveable {
 	// 플레이어의 속도
 	private final int SPEED = 2;
 
-	public Player(Frame mContext) {
+	public Player(GameFrame mContext) {
 		initDate();
 		setInitLayout();
 	}

@@ -48,7 +48,7 @@ public class Frame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(backgroundMap);
 		setSize(600, 900);
-		player = new Player(mContext);
+		//player = new Player(mContext);
 
 	}
 
