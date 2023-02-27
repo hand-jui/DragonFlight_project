@@ -80,7 +80,6 @@ public class resultPanel extends JFrame {
 				// 캐릭터 선택창으로
 				new SelectCharacter();
 				setVisible(false);
-
 			}
 		});
 

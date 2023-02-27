@@ -17,6 +17,7 @@ public class Frame extends JFrame {
 	private Enemy enemy;
 
 	List<Enemy> enemyList = new ArrayList<>();
+	
 
 	int j = 0;
 
