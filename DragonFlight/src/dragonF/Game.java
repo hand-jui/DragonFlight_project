@@ -19,13 +19,13 @@ public class Game extends Thread {
 	private int playerWidth = player.getWidth(null);
 	private int playerHeight = player.getHeight(null);
 	private int playerSpeed = 10;
-	private int state = 0;
-
+	protected int state = 0;
+	
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
 	private Enemy enemy;
 
 	private int delay = 15; // 숫자 늘리면 아래 런메서드에서 속도가 느려짐 -> 게임 속도 조절
-	private long pretime; 
+	private long pretime;
 	private int count;
 	private int score;
 
@@ -36,12 +36,14 @@ public class Game extends Thread {
 	@Override
 	public void run() {
 		reset();
-		while (runFlag) { 
+		while (runFlag) {
 			while (!isOver) { // 부정으로 true
 				// 게임 멈추기 위한 if문 - restart 구현부
 				if (state == 1) {
 					isOver = true;
 					runFlag = false;
+					
+					
 					gameoverWindow = new GameoverWindow();
 					break;
 				}
@@ -55,7 +57,6 @@ public class Game extends Thread {
 						enemyAppearProcess(); // 적 생성 메서드 호출
 						enemyMoveProcess(); // 적 아래로 내려오는 메서드 호출
 						playerbeAttacked(); // 플레이어 감지
-
 						count++;
 
 					} catch (InterruptedException e) {
@@ -84,7 +85,7 @@ public class Game extends Thread {
 
 	}
 
-	//  배경 밖으로 못나가게하는 코드 
+	// 배경 밖으로 못나가게하는 코드
 	private void keyProcess() {
 //		if (up && playerY - playerSpeed > 0)
 //			playerY -= playerSpeed;
@@ -92,7 +93,7 @@ public class Game extends Thread {
 //			playerY += playerSpeed;
 		if (left && playerX - playerSpeed > 0)
 			playerX -= playerSpeed;
-		if (right && playerX + playerWidth + playerSpeed < Main.SCREEN_WIDTH)
+		if (right && playerX + playerWidth + playerSpeed < ScreenSize.SCREEN_WIDTH)
 			playerX += playerSpeed;
 		if (shooting && count % 15 == 0) {
 			playerAttack = new PlayerAttack(playerX + 50, playerY);

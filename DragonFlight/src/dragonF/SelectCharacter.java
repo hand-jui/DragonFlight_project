@@ -83,26 +83,28 @@ public class SelectCharacter extends JFrame {
 	}
 
 	public void addEventListener() {
-		
+
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				//button1 = (JButton) e.getSource();
-				//button1.setIcon(new ImageIcon("images/Close_button.png"));
+				// button1 = (JButton) e.getSource();
+				// button1.setIcon(new ImageIcon("images/Close_button.png"));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				button1 = (JButton) e.getSource();
 				button1.setIcon(new ImageIcon("images/Character_Nella.png"));
 			}
-			
+
 		});
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				//button2 = (JButton) e.getSource();
-				//button2.setIcon(new ImageIcon("images/Close_button.png"));
+				// button2 = (JButton) e.getSource();
+				// button2.setIcon(new ImageIcon("images/Close_button.png"));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				button2 = (JButton) e.getSource();
@@ -112,9 +114,10 @@ public class SelectCharacter extends JFrame {
 		button3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				//button3 = (JButton) e.getSource();
-				//button3.setIcon(new ImageIcon("images/Close_button.png"));
+				// button3 = (JButton) e.getSource();
+				// button3.setIcon(new ImageIcon("images/Close_button.png"));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				button3 = (JButton) e.getSource();
@@ -124,24 +127,25 @@ public class SelectCharacter extends JFrame {
 		button4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				//button4 = (JButton) e.getSource();
-				//button4.setIcon(new ImageIcon("images/Close_button.png"));
+				// button4 = (JButton) e.getSource();
+				// button4.setIcon(new ImageIcon("images/Close_button.png"));
 			}
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				button4 = (JButton) e.getSource();
 				button4.setIcon(new ImageIcon("images/Character_Chloe.png"));
 			}
 		});
-		
-		
+
 		// 게임창으로 넘어감
 		button1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				new ShootingGame();
-				//new Frame();
+				// new Frame();
 				// new FallingBack();
 				setVisible(false);
 
@@ -153,7 +157,7 @@ public class SelectCharacter extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new ShootingGame();
-				//new Frame();
+				// new Frame();
 				// new FallingBack();
 				setVisible(false);
 
@@ -165,7 +169,7 @@ public class SelectCharacter extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new ShootingGame();
-				//new Frame();
+				// new Frame();
 				// new FallingBack();
 				setVisible(false);
 
@@ -177,7 +181,7 @@ public class SelectCharacter extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new ShootingGame();
-				//new Frame();
+				// new Frame();
 				// new FallingBack();
 				setVisible(false);
 

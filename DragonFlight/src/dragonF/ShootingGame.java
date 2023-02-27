@@ -18,16 +18,17 @@ public class ShootingGame extends JFrame implements ActionListener {
 	private BufferedImage backgroundImage;
 	private int backgroundY = 0;
 	private int backgroundSpeed = 5; // 5 스피드로 이동
-	
+
 	private Image bufferImage;
 	private Graphics screenGraphic;
 	private Audio backgroundMusic;
 
 	private boolean isMainScreen, isLoadingScreen, isGameScreen; // 화면 관련 불리언 플래그 3개
-
-	private Game game = new Game(); //
-
+	
+	private Game game = new Game(); 
+	
 	public ShootingGame() {
+		
 		flowBackGround(); // 주이 타이머 코드
 		initData();
 		setInitLayout();
@@ -39,8 +40,8 @@ public class ShootingGame extends JFrame implements ActionListener {
 		backgroundMusic = new Audio("Audio/dragon_flight.wav", true);
 		backgroundMusic.start();
 		setTitle("Shooting Game");
-		// setUndecorated(true);
-		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		//setUndecorated(true);
+		setSize(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(600, 900);
@@ -74,9 +75,9 @@ public class ShootingGame extends JFrame implements ActionListener {
 
 	}
 
-	// 이부분 모름
+
 	public void paint(Graphics g) {
-		bufferImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
+		bufferImage = createImage(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT);
 		screenGraphic = bufferImage.getGraphics();
 		screenDraw(screenGraphic);
 		g.drawImage(bufferImage, 0, 0, null);
@@ -120,11 +121,6 @@ public class ShootingGame extends JFrame implements ActionListener {
 				break;
 			case KeyEvent.VK_RIGHT:
 				game.setRight(true);
-				break;
-			// 리셋 키
-			case KeyEvent.VK_R:
-				if (game.isOver())
-					game.reset();
 				break;
 			case KeyEvent.VK_SPACE:
 				game.setShooting(true);
