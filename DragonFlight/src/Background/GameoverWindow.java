@@ -6,25 +6,30 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
-import Background.StartWindow.MyPanel;
-
-public class resultPanel extends JFrame {
+public class GameoverWindow extends JFrame {
 
 	ImageIcon imageicon;
 	Image image;
 	JPanel panel;
+	JLabel gameover;
+	
 	JButton startbutton;
 	JButton closebutton;
+	
+	JButton startPbutton;
+	JButton closePbutton;
 
-	public resultPanel() {
+	public GameoverWindow() {
+		
 		initData();
 		setInitLayout();
 		addEventListener();
@@ -36,6 +41,10 @@ public class resultPanel extends JFrame {
 		setSize(600, 900);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// 게임오버
+		gameover = new JLabel(new ImageIcon("images/.png"));
+
 
 		panel = new JPanel();
 		startbutton = new JButton(new ImageIcon("images/Re_button.png"));
@@ -61,35 +70,69 @@ public class resultPanel extends JFrame {
 		setResizable(false);
 		setVisible(true);
 		panel.setLayout(null);
+
+		add(gameover);
+		gameover.setSize(400, 154);
+		gameover.setLocation(40, 80);
+
 		add(panel);
+		
 		panel.add(startbutton);
 		panel.add(closebutton);
+		
 		startbutton.setSize(200, 70);
 		closebutton.setSize(200, 70);
-		startbutton.setLocation(50, 700);
-		closebutton.setLocation(300, 700);
-
+		
+		startbutton.setLocation(70, 700);
+		closebutton.setLocation(330, 700);
 	}
 
 	public void addEventListener() {
+		startbutton.addMouseListener(new MouseAdapter() {
 
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				startPbutton = (JButton) e.getSource();
+				startPbutton.setIcon(new ImageIcon("images/Re_Pbutton.png"));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				startbutton = (JButton) e.getSource();
+				startbutton.setIcon(new ImageIcon("images/Re_button.png"));
+			}
+		});
+
+		closebutton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				closePbutton = (JButton) e.getSource();
+				closePbutton.setIcon(new ImageIcon("images/Close_Pbutton.png"));
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				closebutton = (JButton) e.getSource();
+				closebutton.setIcon(new ImageIcon("images/Close_button.png"));
+			}
+		});
+
+		// 버튼 : 캐릭터 선택창으로
 		startbutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 캐릭터 선택창으로
 				new SelectCharacter();
 				setVisible(false);
 			}
 		});
 
+		// 버튼 : 프로그램 종료
 		closebutton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 게임 종료
-				setVisible(false);
-
+				System.exit(0);
 			}
 		});
 
@@ -110,7 +153,7 @@ public class resultPanel extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new resultPanel();
+		new GameoverWindow();
 	}
 
 }
