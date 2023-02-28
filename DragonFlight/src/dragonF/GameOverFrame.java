@@ -144,10 +144,13 @@ public class GameOverFrame extends JFrame {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 100));
+//			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 100));
+			g.setFont(new Font("함초롱바탕", Font.BOLD, 120));
 			g.setColor(Color.white);
-			g.drawString("Game", 100, 120);
-			g.drawString("Over", 120, 220);
+//			g.drawString("Game", 100, 120);
+//			g.drawString("Over", 120, 220);
+			g.drawString("Game", 120, 250);
+			g.drawString("Over", 140, 350);
 		}
 	}
 

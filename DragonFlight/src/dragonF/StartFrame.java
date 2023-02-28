@@ -72,8 +72,8 @@ public class StartFrame extends JFrame {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 30));
-//			g.setFont(new Font("함초롱바탕", Font.BOLD, 30));
+//			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 30));
+			g.setFont(new Font("함초롱바탕", Font.BOLD, 30));
 			g.setColor(Color.white);
 			g.drawString("화면을 클릭해주세요", 160, 630);
 //			g.drawString("화면을 클릭해주세요", 160, 700);

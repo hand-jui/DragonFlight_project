@@ -197,7 +197,8 @@ public class SelectCharacterFrame extends JFrame {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 50));
+//			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 50));
+			g.setFont(new Font("함초롱바탕", Font.BOLD, 50));
 			g.setColor(Color.white);
 			g.drawString("캐릭터를 선택해주세요", 130, 780);
 		}
