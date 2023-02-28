@@ -13,22 +13,22 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-public class ShootingGame extends JFrame implements ActionListener {
+// 게임 진행창
+public class GameFrame extends JFrame implements ActionListener {
 
 	private BufferedImage backgroundImage;
-	private int backgroundY = 0;
-	private int backgroundSpeed = 5; // 5 스피드로 이동
+
+	private int backgroundY = 0; // 백그라운드 위치
+	private int backgroundSpeed = 5; // 5 스피드로 뒷배경 이동
 
 	private Image bufferImage;
 	private Graphics screenGraphic;
-	private Audio backgroundMusic;
+	private GameFrame mContext = this;
+	private GameElement gameElement = new GameElement(this);
 
-	private boolean isMainScreen, isLoadingScreen, isGameScreen; // 화면 관련 불리언 플래그 3개
-	
-	private Game game = new Game(); 
-	
-	public ShootingGame() {
-		
+	private boolean isGameScreen; // 화면 관련 불리언 플래그 3개
+
+	public GameFrame() {
 		flowBackGround(); // 주이 타이머 코드
 		initData();
 		setInitLayout();
@@ -37,10 +37,8 @@ public class ShootingGame extends JFrame implements ActionListener {
 	}
 
 	private void initData() {
-		backgroundMusic = new Audio("Audio/dragon_flight.wav", true);
-		backgroundMusic.start();
-		setTitle("Shooting Game");
-		//setUndecorated(true);
+		setTitle("Game Frame");
+		// setUndecorated(true);
 		setSize(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -61,7 +59,7 @@ public class ShootingGame extends JFrame implements ActionListener {
 	// 게임 시작 메서드
 	private void gameStart() {
 		isGameScreen = true;
-		game.start(); // game에 런 메서드 실행
+		gameElement.start(); // game에 런 메서드 실행
 	}
 
 	public void flowBackGround() {
@@ -75,7 +73,6 @@ public class ShootingGame extends JFrame implements ActionListener {
 
 	}
 
-
 	public void paint(Graphics g) {
 		bufferImage = createImage(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT);
 		screenGraphic = bufferImage.getGraphics();
@@ -87,10 +84,9 @@ public class ShootingGame extends JFrame implements ActionListener {
 	public void screenDraw(Graphics g) {
 		// true일 때 실행, 배경이미지 그려주는 곳
 		if (isGameScreen) {
-			// g.drawImage(gameScreen, 0, 0, null);
 			g.drawImage(backgroundImage, 0, -backgroundY, null);
 			g.drawImage(backgroundImage, 0, -backgroundY - backgroundImage.getHeight(), null);
-			game.gameDraw(g);
+			gameElement.gameElementDraw(g); // gameElement 올리기
 		}
 		this.repaint();
 	}
@@ -117,13 +113,13 @@ public class ShootingGame extends JFrame implements ActionListener {
 //				game.setDown(true);
 //				break;
 			case KeyEvent.VK_LEFT:
-				game.setLeft(true);
+				gameElement.setLeft(true);
 				break;
 			case KeyEvent.VK_RIGHT:
-				game.setRight(true);
+				gameElement.setRight(true);
 				break;
 			case KeyEvent.VK_SPACE:
-				game.setShooting(true);
+				gameElement.setShooting(true);
 				break;
 			case KeyEvent.VK_ESCAPE:
 				System.exit(0);
@@ -134,20 +130,14 @@ public class ShootingGame extends JFrame implements ActionListener {
 		// 키 뗄 떄 false로 만듬
 		public void keyReleased(KeyEvent e) {
 			switch (e.getKeyCode()) {
-			case KeyEvent.VK_UP:
-				game.setUp(false);
-				break;
-			case KeyEvent.VK_DOWN:
-				game.setDown(false);
-				break;
 			case KeyEvent.VK_LEFT:
-				game.setLeft(false);
+				gameElement.setLeft(false);
 				break;
 			case KeyEvent.VK_RIGHT:
-				game.setRight(false);
+				gameElement.setRight(false);
 				break;
 			case KeyEvent.VK_SPACE:
-				game.setShooting(false);
+				gameElement.setShooting(false);
 				break;
 			}
 		}

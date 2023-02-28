@@ -4,6 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+// 적군 한마리
 public class Enemy {
 	Image image = new ImageIcon("images/pinkE.png").getImage();
 	int x, y;

@@ -14,20 +14,24 @@ import javax.swing.JPanel;
 
 // 첫 화면 (로고 수정)
 
-public class StartWindow extends JFrame {
+public class StartFrame extends JFrame {
 
 	ImageIcon imageicon;
 	Image image;
 	MyPanel panel;
 	JLabel logo;
 
-	public StartWindow() {
+	private Audio backgroundMusic;
+
+	public StartFrame() {
 		initData();
 		setInitLayout();
 		addEventListener();
 	}
 
 	public void initData() {
+		backgroundMusic = new Audio("Audio/dragon_flight.wav", true);
+		backgroundMusic.start();
 		setTitle("Start");
 		setSize(600, 900);
 		setLocationRelativeTo(null);
@@ -56,7 +60,7 @@ public class StartWindow extends JFrame {
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new SelectCharacter();
+				new SelectCharacterFrame();
 				setVisible(false);
 			}
 		});
@@ -77,7 +81,7 @@ public class StartWindow extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new StartWindow();
+		new StartFrame();
 
 	}
 

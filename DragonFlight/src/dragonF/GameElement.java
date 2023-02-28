@@ -8,30 +8,37 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Game extends Thread {
+public class GameElement extends Thread {
 
 	private Image player = new ImageIcon("images/player1.png").getImage();
-	private GameoverWindow gameoverWindow;
+	private GameOverFrame gameOverFrame;
 
+	// 적군이 여러마리 -> 각자의 절대값이 다르기 때문에 총알 하나하나의 기능을 수행하기 위해
 	private ArrayList<PlayerAttack> playerAttackList = new ArrayList<PlayerAttack>();
 	private PlayerAttack playerAttack;
 	private int playerX, playerY;
 	private int playerWidth = player.getWidth(null);
-	private int playerHeight = player.getHeight(null);
 	private int playerSpeed = 10;
 	protected int state = 0;
-	
+
+	// 적군 여러마리 생성 리스트
 	private ArrayList<Enemy> enemyList = new ArrayList<Enemy>();
 	private Enemy enemy;
 
-	private int delay = 15; // 숫자 늘리면 아래 런메서드에서 속도가 느려짐 -> 게임 속도 조절
-	private long pretime;
-	private int count;
+	private int count; // 총알 발사 빠르기 조절
 	private int score;
 
-	private boolean up, down, left, right, shooting;
+	private boolean left;
+	private boolean right;
+	private boolean shooting;
 	private boolean isOver;
 	private boolean runFlag = true;
+
+	private GameFrame mContext;
+
+	public GameElement(GameFrame mContext) {
+		this.mContext = mContext;
+	}
 
 	@Override
 	public void run() {
@@ -42,16 +49,15 @@ public class Game extends Thread {
 				if (state == 1) {
 					isOver = true;
 					runFlag = false;
-					
-					
-					gameoverWindow = new GameoverWindow();
+					mContext.setVisible(false);
+					gameOverFrame = new GameOverFrame();
 					break;
 				}
-				pretime = System.currentTimeMillis();
-				if (System.currentTimeMillis() - pretime < delay) {
-					// state == 1 되면 게임 멈춤
+
+				if (true) {
+
 					try {
-						Thread.sleep(delay - System.currentTimeMillis() + pretime);
+						Thread.sleep(10);
 						keyProcess();
 						playerAttackProcess();
 						enemyAppearProcess(); // 적 생성 메서드 호출
@@ -87,15 +93,11 @@ public class Game extends Thread {
 
 	// 배경 밖으로 못나가게하는 코드
 	private void keyProcess() {
-//		if (up && playerY - playerSpeed > 0)
-//			playerY -= playerSpeed;
-//		if (down && playerY + playerHeight + playerSpeed < Main.SCREEN_HEIGHT)
-//			playerY += playerSpeed;
 		if (left && playerX - playerSpeed > 0)
 			playerX -= playerSpeed;
 		if (right && playerX + playerWidth + playerSpeed < ScreenSize.SCREEN_WIDTH)
 			playerX += playerSpeed;
-		if (shooting && count % 15 == 0) {
+		if (shooting && count % 10 == 0) {
 			playerAttack = new PlayerAttack(playerX + 50, playerY);
 			playerAttackList.add(playerAttack);
 		}
@@ -150,24 +152,12 @@ public class Game extends Thread {
 		}
 	}
 
-	public void gameDraw(Graphics g) {
+	public void gameElementDraw(Graphics g) {
 		if (player != null) {
 			playerDraw(g); // 플레이어 그리는거 호출
 		}
 		enemyDraw(g);// 적 그리는거 호출
 		infoDraw(g); // 게임 정보 호출
-	}
-
-	// 게임 정보 그려주는 곳
-	public void infoDraw(Graphics g) {
-		g.setColor(Color.WHITE);
-		g.setFont(new Font("Arial", Font.BOLD, 20));
-		g.drawString("SCORE : " + score, 40, 80); // 스코어 표시
-		if (isOver) {
-			g.setColor(Color.BLACK);
-			g.setFont(new Font("Arial", Font.BOLD, 63));
-			g.drawString("GAME OVER", 100, 400);
-		}
 	}
 
 	public void playerDraw(Graphics g) {
@@ -189,16 +179,20 @@ public class Game extends Thread {
 		}
 	}
 
+	// 게임 정보 그려주는 곳
+	public void infoDraw(Graphics g) {
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Arial", Font.BOLD, 20));
+		g.drawString("SCORE : " + score, 40, 80); // 스코어 표시
+		if (isOver) {
+			g.setColor(Color.BLACK);
+			g.setFont(new Font("Arial", Font.BOLD, 63));
+			g.drawString("GAME OVER", 100, 400);
+		}
+	}
+
 	public boolean isOver() {
 		return isOver;
-	}
-
-	public void setUp(boolean up) {
-		this.up = up;
-	}
-
-	public void setDown(boolean down) {
-		this.down = down;
 	}
 
 	public void setLeft(boolean left) {

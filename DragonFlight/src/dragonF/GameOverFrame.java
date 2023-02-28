@@ -15,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class GameoverWindow extends JFrame {
+public class GameOverFrame extends JFrame {
 
 	ImageIcon imageicon;
 	Image image;
@@ -28,7 +28,7 @@ public class GameoverWindow extends JFrame {
 	JButton startPbutton;
 	JButton closePbutton;
 
-	public GameoverWindow() {
+	public GameOverFrame() {
 
 		initData();
 		setInitLayout();
@@ -121,7 +121,7 @@ public class GameoverWindow extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new SelectCharacter();
+				new SelectCharacterFrame();
 				setVisible(false);
 			}
 		});
@@ -144,19 +144,15 @@ public class GameoverWindow extends JFrame {
 		protected void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
-			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 80));
+			g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 100));
 			g.setColor(Color.white);
-			g.drawString("GAME OVER", 50, 400);
-
-			// g.setFont(new Font("SB 어그로 BOLD", Font.PLAIN, 100));
-			// g.setColor(Color.white);
-			// g.drawString("Game", 100, 120);
-			// g.drawString("Over", 120, 220);
+			g.drawString("Game", 100, 120);
+			g.drawString("Over", 120, 220);
 		}
 	}
 
 	public static void main(String[] args) {
-		new GameoverWindow();
+		new GameOverFrame();
 	}
 
 }

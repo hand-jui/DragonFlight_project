@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class SelectCharacter extends JFrame {
+public class SelectCharacterFrame extends JFrame {
 
 	ImageIcon imageicon;
 	Image image;
@@ -26,7 +26,7 @@ public class SelectCharacter extends JFrame {
 	private JButton button3;
 	private JButton button4;
 
-	public SelectCharacter() {
+	public SelectCharacterFrame() {
 
 		initData();
 		setInitLayout();
@@ -144,7 +144,7 @@ public class SelectCharacter extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				new ShootingGame();
+				new GameFrame();
 				// new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -156,7 +156,7 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ShootingGame();
+				new GameFrame();
 				// new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -168,7 +168,7 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ShootingGame();
+				new GameFrame();
 				// new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -180,7 +180,7 @@ public class SelectCharacter extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new ShootingGame();
+				new GameFrame();
 				// new Frame();
 				// new FallingBack();
 				setVisible(false);
@@ -204,7 +204,7 @@ public class SelectCharacter extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new SelectCharacter();
+		new SelectCharacterFrame();
 	}
 
 }
