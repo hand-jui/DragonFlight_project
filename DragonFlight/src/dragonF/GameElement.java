@@ -53,7 +53,6 @@ public class GameElement extends Thread {
 					gameOverFrame = new GameOverFrame();
 					break;
 				}
-
 				if (true) {
 
 					try {
@@ -98,7 +97,7 @@ public class GameElement extends Thread {
 		if (right && playerX + playerWidth + playerSpeed < ScreenSize.SCREEN_WIDTH)
 			playerX += playerSpeed;
 		if (shooting && count % 10 == 0) {
-			playerAttack = new PlayerAttack(playerX + 50, playerY);
+			playerAttack = new PlayerAttack(playerX - 10, playerY - 70);
 			playerAttackList.add(playerAttack);
 		}
 	}
@@ -111,7 +110,7 @@ public class GameElement extends Thread {
 
 			for (int j = 0; j < enemyList.size(); j++) {
 				enemy = enemyList.get(j);
-				if (playerAttack.x > enemy.x && playerAttack.x < enemy.x + enemy.width && playerAttack.y > enemy.y
+				if (playerAttack.x + 60> enemy.x && playerAttack.x +60 < enemy.x + enemy.width && playerAttack.y > enemy.y
 						&& playerAttack.y < enemy.y + enemy.height) {
 					enemy.hp -= playerAttack.attack; // 적의 Hp를 깎는다
 					playerAttackList.remove(playerAttack); // 위의 조건에 부합하면 총알을 지운다.

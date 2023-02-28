@@ -5,7 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class PlayerAttack {
-	Image image = new ImageIcon("images/fireAttack.png").getImage();
+	Image image = new ImageIcon("images/bullet.png").getImage();
 	int x, y;
 	int width = image.getWidth(null);
 	int height = image.getHeight(null);
